@@ -6,10 +6,11 @@
 <!-- ======= About Section ======= -->
 <section id="about" class="about">
   <div class="container" data-aos="fade-up">
-
+ 
     <div class="section-title">
       <h2>About</h2>
-      <p>I am Sufi Timilsina, a software developer.</p>
+      @foreach ($aboutlist as $about) 
+      <p>{{ $about->describe }}</p>
     </div>
 
     <div class="row">
@@ -18,19 +19,20 @@
           <div class="col-lg-6">
             <ul>
               <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>27 Feb, 2000</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.sufitimilsina.com.np</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Pokhara, Nepal</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{ $about->website }}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{ $about->location }}</span></li>
             </ul>
           </div>
           <div class="col-lg-6">
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Computer Science</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $about->age }}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{ $about->degree }}</span></li>
           
             </ul>
           </div>
         </div>
       </div>
+      @endforeach
     </div>
 
   </div>
@@ -44,45 +46,25 @@
       <h2>Skills</h2>
     </div>
     <div class="row skills-content">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Language and Script</th>
+      <th scope="col">Web Technologies</th>
+      <th scope="col">Designing</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($skilllist as $skill) 
+    <tr>
 
-      <div class="col-lg-4">
-        <div class="card border-gray mb-3">
-<div class="card-header"><strong>Language and Script</strong></div>
-<div class="card-body">
-<ul class="card-text">
-   <li><i class="bi bi-chevron-right"></i> C</li>
-   <li><i class="bi bi-chevron-right"></i> C++</li>
-   <li><i class="bi bi-chevron-right"></i> JavaScript</li>
-   <li><i class="bi bi-chevron-right"></i> Php</li>
-   <li><i class="bi bi-chevron-right"></i> Python</li>
-   <li><i class="bi bi-chevron-right"></i> Java</li>
-</ul>  </div>
-</div>
-</div>
-     <div class="col-lg-4">
-        <div class="card border-gray mb-3">
-<div class="card-header"><strong>Web Technologies</strong></div>
-<div class="card-body">
-<ul class="card-text">
-   <li><i class="bi bi-chevron-right"></i> Django</li>
-   <li><i class="bi bi-chevron-right"></i> Laravel</li>
-   <li><i class="bi bi-chevron-right"></i> Bootstrap</li>
-    <li><i class="bi bi-chevron-right"></i> HTML/HTML5</li>
-   <li><i class="bi bi-chevron-right"></i> CSS/CSS3</li>
-</ul>  </div>
-</div>
-</div>
-     <div class="col-lg-4">
-        <div class="card border-gray mb-3">
-<div class="card-header"><strong>Designing</strong></div>
-<div class="card-body">
-<ul class="card-text">
-   <li><i class="bi bi-chevron-right"></i> AdobeXd</li>
-   <li><i class="bi bi-chevron-right"></i> Figma</li>
-   <li><i class="bi bi-chevron-right"></i> Adobe Photoshop</li>
-</ul>  </div>
-</div>
-</div>
+      <td>{{ $skill->language }}</td>
+      <td>{{ $skill->technology }}</td>
+      <td>{{ $skill->design }}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 </main>
 
 @stop

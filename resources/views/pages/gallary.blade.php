@@ -14,34 +14,36 @@
           <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-card">My Photos</li>
+            
               <li data-filter=".filter-app">Portfolio</li>
+              <li data-filter=".filter-card">My Photos</li>
               
             </ul>
           </div>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      @foreach  ($gallarylist as $gallary) 
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <img src="{{ Storage::url($gallary->photos) }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <p>Card</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                  <a href="{{ Storage::url($gallary->photos) }}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="fa-solid fa-magnifying-glass"></i></a>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+        @endforeach
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        @foreach  ($portfoliolist as $portfolio) 
+         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="{{ Storage::url($portfolio->image) }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <p>App</p>
+                <p>{{ $portfolio->title }}</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="{{ Storage::url($portfolio->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $portfolio->detail }}"><i class="fa-solid fa-magnifying-glass"></i></a>
                  
                 </div>
               </div>
@@ -49,6 +51,7 @@
           </div>
 
         </div>
+        @endforeach
 
       </div>
     </section><!-- End Portfolio Section -->

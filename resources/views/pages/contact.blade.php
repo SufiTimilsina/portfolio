@@ -9,30 +9,33 @@
         <div class="section-title">
           <h2>Contact</h2>
         </div>
-
+       
         <div class="row mt-1">
-
+        @foreach ($aboutlist as $about) 
           <div class="col-lg-4">
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>Pokhara, Nepal</p>
+                <p>{{ $about->location }}</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>Sufee44@gmail.com</p>
+                <p>{{ $about->email }}</p>
               </div>
 
             </div>
 
           </div>
-
+          @endforeach
+        
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{{ route ('contactus') }}" method="POST" role="form" class="contactform" enctype="multipart/form-data">
+              {{csrf_field()}}
+
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -44,11 +47,11 @@
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
+              @if (session('status'))
+                <div class="send-message" role="alert">
+                {{ session('status') }}</div>
+                @endif
+
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
 

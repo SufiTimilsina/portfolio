@@ -38,7 +38,7 @@
       <ul>
         <li><a href="\" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="{{ route('about') }}" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="{{ route('gallary') }}" class="nav-link"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="{{ route('gallary') }}" class="nav-link"><i class="bx bx-book-content"></i> <span>Gallary</span></a></li>
         <li><a href="{{ route('blog') }}" class="nav-link"><i class="bx bx-server"></i> <span>Blog</span></a></li>
         <li><a href="{{ route('contact') }}" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
       </ul>
